@@ -15,34 +15,34 @@ b = zeros(N,1);       % Edge temperature
 for i = 1:m
     for j = 1:m
         
-        k = i + (j-1)*m;   % convert (i,j) → index
+        k = i + (j - 1)*m;   % convert (i,j) → index
         
-        A(k,k) = 4;
+        A(k, k) = 4;
         
         % Left neighbour
         if i > 1
-            A(k,k-1) = -1;
+            A(k, k - 1) = -1;
         else
             b(k) = b(k) + TL;
         end
         
         % Right neighbour
         if i < m
-            A(k,k+1) = -1;
+            A(k, k + 1) = -1;
         else
             b(k) = b(k) + TR;
         end
         
         % Lower neighbour
         if j > 1
-            A(k,k-m) = -1;
+            A(k, k - m) = -1;
         else
             b(k) = b(k) + TB;
         end
         
         % Top neighbour
         if j < m
-            A(k,k+m) = -1;
+            A(k, k + m) = -1;
         else
             b(k) = b(k) + TT;
         end
@@ -64,7 +64,7 @@ U_1(:,1)=TL; U_1(:,end)=TR;
 U_1(1,:)=TB; U_1(end,:)=TT;
 
 
-%% --- Jacobi-iteration
+%% Jacobi-iteration
 % Create grid
 U_2 = zeros(n, n);
 
